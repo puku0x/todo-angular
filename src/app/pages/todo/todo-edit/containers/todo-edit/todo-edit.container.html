@@ -1,0 +1,5 @@
+<app-todo-edit
+  [isFetching]="isFetching$ | async"
+  [todo]="todo$ | async"
+  (update)="update($event)"
+></app-todo-edit>

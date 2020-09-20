@@ -1,0 +1,30 @@
+<h2>todo-list</h2>
+<p>
+  <a role="button" routerLink="new">Add a new todo</a>
+</p>
+<ng-container *ngIf="todos; else elseBlock">
+  <form [formGroup]="form">
+    offset
+    <input
+      type="number"
+      min="0"
+      formControlName="offset"
+      (change)="changeOffset.emit(form.get('offset')?.value)"
+    />
+    limit
+    <input
+      type="number"
+      min="0"
+      formControlName="limit"
+      (change)="changeLimit.emit(form.get('limit')?.value)"
+    />
+  </form>
+  <ul>
+    <li *ngFor="let todo of todos">
+      <a [class.completed]="todo.completed" [routerLink]="todo.id">
+        {{ todo.title }}
+      </a>
+    </li>
+  </ul>
+</ng-container>
+<ng-template #elseBlock>loading...</ng-template>

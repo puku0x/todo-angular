@@ -1,0 +1,7 @@
+<app-todo-list
+  [offset]="offset"
+  [limit]="limit"
+  [todos]="todos$ | async"
+  (changeOffset)="changeOffset($event)"
+  (changeLimit)="changeLimit($event)"
+></app-todo-list>

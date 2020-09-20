@@ -1,0 +1,6 @@
+<ng-container *ngIf="vm$ | async as vm">
+  <app-todo-list-container
+    [offset]="vm.offset"
+    [limit]="vm.limit"
+  ></app-todo-list-container>
+</ng-container>

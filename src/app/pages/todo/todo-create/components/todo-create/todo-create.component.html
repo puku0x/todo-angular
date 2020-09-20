@@ -1,0 +1,17 @@
+<a routerLink="/todos">Back to list</a>
+<h2>todo-create</h2>
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <p>
+    <button type="submit" [disabled]="isFetching || form.invalid">Save</button>
+  </p>
+  <table>
+    <tbody>
+      <tr>
+        <td>title</td>
+        <td>
+          <input type="text" formControlName="title" />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</form>
