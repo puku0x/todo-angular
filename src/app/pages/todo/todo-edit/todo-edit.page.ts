@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-todo-edit-page',
   templateUrl: './todo-edit.page.html',
-  styleUrls: ['./todo-edit.page.css'],
+  styleUrls: ['./todo-edit.page.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TodoEditPageComponent implements OnInit {

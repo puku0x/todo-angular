@@ -6,7 +6,7 @@ import { map } from 'rxjs/operators';
 @Component({
   selector: 'app-todo-list-page',
   templateUrl: './todo-list.page.html',
-  styleUrls: ['./todo-list.page.css'],
+  styleUrls: ['./todo-list.page.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TodoListPageComponent implements OnInit {

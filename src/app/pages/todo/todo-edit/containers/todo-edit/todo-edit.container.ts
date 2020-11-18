@@ -11,7 +11,7 @@ import { TodoFacade } from '../../../../../store';
 @Component({
   selector: 'app-todo-edit-container',
   templateUrl: './todo-edit.container.html',
-  styleUrls: ['./todo-edit.container.css'],
+  styleUrls: ['./todo-edit.container.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TodoEditContainerComponent implements OnInit {

@@ -14,7 +14,7 @@ import { TodoEditPresenter } from './todo-edit.presenter';
 @Component({
   selector: 'app-todo-edit',
   templateUrl: './todo-edit.component.html',
-  styleUrls: ['./todo-edit.component.css'],
+  styleUrls: ['./todo-edit.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [TodoEditPresenter],
 })

@@ -12,7 +12,7 @@ import { TodoFacade } from '../../../../../store';
 @Component({
   selector: 'app-todo-list-container',
   templateUrl: './todo-list.container.html',
-  styleUrls: ['./todo-list.container.css'],
+  styleUrls: ['./todo-list.container.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TodoListContainerComponent implements OnChanges, OnInit {

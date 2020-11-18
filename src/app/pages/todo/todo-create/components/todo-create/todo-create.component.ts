@@ -13,7 +13,7 @@ import { TodoCreatePresenter } from './todo-create.presenter';
 @Component({
   selector: 'app-todo-create',
   templateUrl: './todo-create.component.html',
-  styleUrls: ['./todo-create.component.css'],
+  styleUrls: ['./todo-create.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [TodoCreatePresenter],
 })

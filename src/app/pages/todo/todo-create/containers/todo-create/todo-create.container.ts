@@ -6,7 +6,7 @@ import { TodoFacade } from '../../../../../store';
 @Component({
   selector: 'app-todo-create-container',
   templateUrl: './todo-create.container.html',
-  styleUrls: ['./todo-create.container.css'],
+  styleUrls: ['./todo-create.container.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TodoCreateContainerComponent implements OnInit {
