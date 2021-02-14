@@ -23,9 +23,9 @@ export class TodoCreatePresenter implements OnDestroy {
   }
 
   create(): void {
-    const title = this.form.get('title')?.value as string;
-    this.subject.next({
-      title,
-    });
+    const dto: TodoCreateDto = {
+      title: this.form.get('title')?.value,
+    };
+    this.subject.next(dto);
   }
 }
