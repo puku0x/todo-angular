@@ -25,12 +25,6 @@ import {
 
 @Injectable()
 export class TodoEffects {
-  constructor(
-    private readonly actions$: Actions,
-    private readonly router: Router,
-    private readonly todoService: TodoService
-  ) {}
-
   fetchAll$ = createEffect(() =>
     this.actions$.pipe(
       ofType(fetchAll),
@@ -112,4 +106,10 @@ export class TodoEffects {
       )
     )
   );
+
+  constructor(
+    private readonly actions$: Actions,
+    private readonly router: Router,
+    private readonly todoService: TodoService
+  ) {}
 }

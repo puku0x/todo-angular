@@ -1,22 +1,25 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 import { TodoCreateDto } from '../../../../../models';
 
 @Injectable()
 export class TodoCreatePresenter implements OnDestroy {
-  private subject: Subject<TodoCreateDto> = new Subject();
-  create$ = this.subject.asObservable();
-
   form = this.fb.group({
     title: ['', Validators.required],
   });
+
+  private subject: Subject<TodoCreateDto> = new Subject();
 
   constructor(private readonly fb: FormBuilder) {}
 
   ngOnDestroy(): void {
     this.subject.complete();
+  }
+
+  get create$(): Observable<TodoCreateDto> {
+    return this.subject.asObservable();
   }
 
   create(): void {

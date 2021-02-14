@@ -1,14 +1,11 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 import { Todo, TodoUpdateDto } from '../../../../../models';
 
 @Injectable()
 export class TodoEditPresenter implements OnDestroy {
-  private subject: Subject<TodoUpdateDto> = new Subject();
-  update$ = this.subject.asObservable();
-
   todo: Todo | null = null;
 
   form = this.fb.group({
@@ -16,10 +13,16 @@ export class TodoEditPresenter implements OnDestroy {
     completed: [false],
   });
 
+  private subject: Subject<TodoUpdateDto> = new Subject();
+
   constructor(private readonly fb: FormBuilder) {}
 
   ngOnDestroy(): void {
     this.subject.complete();
+  }
+
+  get update$(): Observable<TodoUpdateDto> {
+    return this.subject.asObservable();
   }
 
   init(todo: Todo | null): void {
