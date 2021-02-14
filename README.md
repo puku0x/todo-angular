@@ -1,6 +1,6 @@
 # todo-angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.x.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.x.
 
 ## Development server
 
