@@ -36,16 +36,13 @@ export class TodoEditPresenter implements OnDestroy {
   }
 
   update(): void {
-    if (!this.todo) {
-      return;
+    if (this.todo) {
+      const dto: TodoUpdateDto = {
+        id: this.todo.id,
+        title: this.form.get('title')?.value,
+        completed: this.form.get('completed')?.value,
+      };
+      this.subject.next(dto);
     }
-    const id = this.todo.id;
-    const title = this.form.get('title')?.value as string;
-    const completed = this.form.get('completed')?.value as boolean;
-    this.subject.next({
-      id,
-      title,
-      completed,
-    });
   }
 }
