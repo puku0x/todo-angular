@@ -18,10 +18,10 @@ import { Todo } from '../../../../../models';
 })
 export class TodoListComponent implements OnInit {
   @Input()
-  offset!: number;
+  offset: number | null = null;
 
   @Input()
-  limit!: number;
+  limit: number | null = null;
 
   @Input()
   todos: Todo[] | null = null;
