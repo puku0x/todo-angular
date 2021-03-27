@@ -15,13 +15,15 @@ import { TodoFacade } from '../../../../../store';
 })
 export class TodoDetailContainerComponent implements OnInit {
   @Input()
-  id!: string;
+  id: string | null = null;
 
   todo$ = this.todoFacade.todo$;
 
   constructor(private readonly todoFacade: TodoFacade) {}
 
   ngOnInit(): void {
-    this.todoFacade.fetch(this.id);
+    if (this.id) {
+      this.todoFacade.fetch(this.id);
+    }
   }
 }
