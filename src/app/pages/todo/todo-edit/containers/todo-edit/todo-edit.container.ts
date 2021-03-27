@@ -16,7 +16,7 @@ import { TodoFacade } from '../../../../../store';
 })
 export class TodoEditContainerComponent implements OnInit {
   @Input()
-  id!: string;
+  id: string | null = null;
 
   isFetching$ = this.todoFacade.isFetching$;
   todo$ = this.todoFacade.todo$;
@@ -24,7 +24,9 @@ export class TodoEditContainerComponent implements OnInit {
   constructor(private readonly todoFacade: TodoFacade) {}
 
   ngOnInit(): void {
-    this.todoFacade.fetch(this.id);
+    if (this.id) {
+      this.todoFacade.fetch(this.id);
+    }
   }
 
   update(todo: TodoUpdateDto): void {
