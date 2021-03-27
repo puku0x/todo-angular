@@ -7,6 +7,7 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 import { Todo, TodoUpdateDto } from '../../../../../models';
 import { TodoEditPresenter } from './todo-edit.presenter';
@@ -28,7 +29,9 @@ export class TodoEditComponent implements OnInit, OnChanges {
   @Output()
   update = new EventEmitter<TodoUpdateDto>();
 
-  form = this.presenter.form;
+  get formGroup(): FormGroup {
+    return this.presenter.formGroup;
+  }
 
   constructor(private readonly presenter: TodoEditPresenter) {}
 

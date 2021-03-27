@@ -1,9 +1,9 @@
 <a [routerLink]="['/todos', todo?.id]">Back to detail</a>
 <h2>todo-edit</h2>
 <ng-container *ngIf="todo; else elseBlock">
-  <form [formGroup]="form" (ngSubmit)="submit()">
+  <form [formGroup]="formGroup" (ngSubmit)="submit()">
     <p>
-      <button type="submit" [disabled]="isFetching || form.invalid">
+      <button type="submit" [disabled]="isFetching || formGroup.invalid">
         Save
       </button>
     </p>

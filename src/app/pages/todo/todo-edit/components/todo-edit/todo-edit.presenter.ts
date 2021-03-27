@@ -8,7 +8,7 @@ import { Todo, TodoUpdateDto } from '../../../../../models';
 export class TodoEditPresenter implements OnDestroy {
   todo: Todo | null = null;
 
-  form = this.fb.group({
+  formGroup = this.fb.group({
     title: ['', Validators.required],
     completed: [false],
   });
@@ -27,7 +27,7 @@ export class TodoEditPresenter implements OnDestroy {
 
   init(todo: Todo | null): void {
     if (todo !== this.todo) {
-      this.form.patchValue({
+      this.formGroup.patchValue({
         title: todo?.title ?? '',
         completed: todo?.completed ?? false,
       });
@@ -39,8 +39,8 @@ export class TodoEditPresenter implements OnDestroy {
     if (this.todo) {
       const dto: TodoUpdateDto = {
         id: this.todo.id,
-        title: this.form.get('title')?.value,
-        completed: this.form.get('completed')?.value,
+        title: this.formGroup.get('title')?.value,
+        completed: this.formGroup.get('completed')?.value,
       };
       this.subject.next(dto);
     }
