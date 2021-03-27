@@ -6,7 +6,7 @@ import { TodoCreateDto } from '../../../../../models';
 
 @Injectable()
 export class TodoCreatePresenter implements OnDestroy {
-  form = this.fb.group({
+  formGroup = this.fb.group({
     title: ['', Validators.required],
   });
 
@@ -24,7 +24,7 @@ export class TodoCreatePresenter implements OnDestroy {
 
   create(): void {
     const dto: TodoCreateDto = {
-      title: this.form.get('title')?.value,
+      title: this.formGroup.get('title')?.value,
     };
     this.subject.next(dto);
   }

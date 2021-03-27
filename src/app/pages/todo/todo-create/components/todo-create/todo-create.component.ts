@@ -6,6 +6,7 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 import { TodoCreateDto } from '../../../../../models';
 import { TodoCreatePresenter } from './todo-create.presenter';
@@ -15,7 +16,7 @@ import { TodoCreatePresenter } from './todo-create.presenter';
   templateUrl: './todo-create.component.html',
   styleUrls: ['./todo-create.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [TodoCreatePresenter],
+  viewProviders: [TodoCreatePresenter],
 })
 export class TodoCreateComponent implements OnInit {
   @Input()
@@ -24,7 +25,9 @@ export class TodoCreateComponent implements OnInit {
   @Output()
   create = new EventEmitter<TodoCreateDto>();
 
-  form = this.presenter.form;
+  get formGroup(): FormGroup {
+    return this.presenter.formGroup;
+  }
 
   constructor(private readonly presenter: TodoCreatePresenter) {}
 
