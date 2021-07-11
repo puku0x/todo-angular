@@ -6,15 +6,33 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import { FormGroup } from '@angular/forms';
 
 import { TodoCreateDto } from '../../../../../models';
 import { TodoCreatePresenter } from './todo-create.presenter';
 
 @Component({
   selector: 'app-todo-create',
-  templateUrl: './todo-create.component.html',
-  styleUrls: ['./todo-create.component.scss'],
+  template: `
+    <a routerLink="/todos">Back to list</a>
+    <h2>todo-create</h2>
+    <form [formGroup]="formGroup" (ngSubmit)="submit()">
+      <p>
+        <button type="submit" [disabled]="isFetching || formGroup.invalid">
+          Save
+        </button>
+      </p>
+      <table>
+        <tbody>
+          <tr>
+            <td>title</td>
+            <td>
+              <input type="text" formControlName="title" />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   viewProviders: [TodoCreatePresenter],
 })
@@ -25,9 +43,7 @@ export class TodoCreateComponent implements OnInit {
   @Output()
   create = new EventEmitter<TodoCreateDto>();
 
-  get formGroup(): FormGroup {
-    return this.presenter.formGroup;
-  }
+  formGroup = this.presenter.formGroup;
 
   constructor(private readonly presenter: TodoCreatePresenter) {}
 

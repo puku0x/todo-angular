@@ -1,22 +1,25 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { TodoCreateDto } from '../../../../../models';
-import { TodoFacade } from '../../../../../store';
+import { TodoCreateFacade } from './todo-create.facade';
 
 @Component({
   selector: 'app-todo-create-container',
-  templateUrl: './todo-create.container.html',
-  styleUrls: ['./todo-create.container.scss'],
+  template: `
+    <app-todo-create
+      [isFetching]="isFetching$ | async"
+      (create)="create($event)"
+    ></app-todo-create>
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  viewProviders: [TodoCreateFacade],
 })
-export class TodoCreateContainerComponent implements OnInit {
-  isFetching$ = this.todoFacade.isFetching$;
+export class TodoCreateContainerComponent {
+  isFetching$ = this.facade.isFetching$;
 
-  constructor(private readonly todoFacade: TodoFacade) {}
-
-  ngOnInit(): void {}
+  constructor(private readonly facade: TodoCreateFacade) {}
 
   create(todo: TodoCreateDto): void {
-    this.todoFacade.create(todo);
+    this.facade.create(todo);
   }
 }

@@ -3,7 +3,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { provideMockStore } from '@ngrx/store/testing';
 
-import { TodoFacade } from '../../../../../store';
+import { TodoCreateFacade } from './todo-create.facade';
 import { TodoCreateContainerComponent } from './todo-create.container';
 
 describe('TodoCreateContainerComponent', () => {
@@ -17,8 +17,8 @@ describe('TodoCreateContainerComponent', () => {
       providers: [
         provideMockStore(),
         {
-          provide: TodoFacade,
-          useValue: jasmine.createSpyObj('TodoFacade', ['create']),
+          provide: TodoCreateFacade,
+          useValue: jasmine.createSpyObj('TodoCreateFacade', ['create']),
         },
       ],
     }).compileComponents();
