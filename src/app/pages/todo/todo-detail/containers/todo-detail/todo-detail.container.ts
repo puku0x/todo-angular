@@ -6,12 +6,15 @@ import {
 } from '@angular/core';
 
 import { TodoFacade } from '../../../../../store';
+import { TodoDetailFacade } from './todo-detail.facade';
 
 @Component({
   selector: 'app-todo-detail-container',
-  templateUrl: './todo-detail.container.html',
-  styleUrls: ['./todo-detail.container.scss'],
+  template: `
+    <app-todo-detail [todo]="todo$ | async"></app-todo-detail>
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  viewProviders: [TodoDetailFacade],
 })
 export class TodoDetailContainerComponent implements OnInit {
   @Input()

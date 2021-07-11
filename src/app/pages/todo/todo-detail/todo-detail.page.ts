@@ -1,16 +1,15 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-todo-detail-page',
-  templateUrl: './todo-detail.page.html',
-  styleUrls: ['./todo-detail.page.scss'],
+  template: `
+    <app-todo-detail-container [id]="id"></app-todo-detail-container>
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TodoDetailPageComponent implements OnInit {
+export class TodoDetailPageComponent {
   id = this.route.snapshot.paramMap.get('id');
 
   constructor(private readonly route: ActivatedRoute) {}
-
-  ngOnInit(): void {}
 }
